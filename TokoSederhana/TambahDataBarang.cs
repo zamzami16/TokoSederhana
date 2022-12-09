@@ -14,11 +14,25 @@ namespace TokoSederhana
         public TambahDataBarang()
         {
             InitializeComponent();
+            initColumnTable();
         }
 
         // Add Row selected
         int rowSelectedForEdit;
-        //DataTable sourceDataGrid = new DataTable();
+        DataTable sourceDataGrid = new DataTable();
+
+        // Add header for data table
+        private void initColumnTable()
+        {
+            this.sourceDataGrid.Clear();
+            this.sourceDataGrid.Columns.Add("NO", typeof(int));
+            this.sourceDataGrid.Columns.Add("KODE", typeof(string));
+            this.sourceDataGrid.Columns.Add("NAMA BARANG", typeof(string));
+            this.sourceDataGrid.Columns.Add("HARGA BELI", typeof(double));
+            this.sourceDataGrid.Columns.Add("HARGA JUAL", typeof(double));
+
+            dataGridView1.DataSource = this.sourceDataGrid;
+        }
 
         private void label2_Click(object sender, EventArgs e)
         {
@@ -30,10 +44,10 @@ namespace TokoSederhana
             int idx;           
             string kode = textBoxKodeBarang.Text;
             string namaBarang = textBoxNamaBarang.Text;
-            int hargaBarang, keuntungan;
+            double hargaBarang, keuntungan;
             double hargaJual;
-            bool resHB = int.TryParse(textBoxHargaBeli.Text, out hargaBarang);
-            bool resLaba = int.TryParse(textBoxKeuntungan.Text, out keuntungan);
+            bool resHB = double.TryParse(textBoxHargaBeli.Text, out hargaBarang);
+            bool resLaba = double.TryParse(textBoxKeuntungan.Text, out keuntungan);
 
             if (kode == string.Empty | namaBarang == string.Empty)
             {
@@ -59,27 +73,50 @@ namespace TokoSederhana
             {
                 if (buttonTambahDataBarang.Text == "TAMBAH DATA")
                 {
-                    idx = dataGridView1.Rows.Add();
+                    idx = this.sourceDataGrid.Rows.Count;
+                    hargaJual = (100 + keuntungan) / 100.0 * hargaBarang;
+                    TambahDataKeGrid(idx, kode.ToUpper(), namaBarang.ToUpper(), hargaBarang, hargaJual);
                 }
                 else
                 {
                     idx = this.rowSelectedForEdit;
-                }
-
-                hargaJual = (100 + keuntungan) / 100.0 * hargaBarang;
-                TambahDataKeGrid(idx, kode, namaBarang, hargaBarang, hargaJual);
+                    hargaJual = (100 + keuntungan) / 100.0 * hargaBarang;
+                    UpdateDataTable(idx, kode.ToUpper(), namaBarang.ToUpper(), hargaBarang, hargaJual);
+                }            
             }
             
             
         }
 
-        private void TambahDataKeGrid(int idx_, string kode_, string nama_barang_, int hargaBarang_, double hargaJual_)
+        private void TambahDataKeGrid(int idx_, string kode_, string nama_barang_, double hargaBarang_, double hargaJual_)
         {
+            /*Ini langsung tambah ke datagridview
+            
             dataGridView1.Rows[idx_].Cells[0].Value = idx_ + 1;
             dataGridView1.Rows[idx_].Cells[1].Value = kode_.ToUpper();
             dataGridView1.Rows[idx_].Cells[2].Value = nama_barang_.ToUpper();
             dataGridView1.Rows[idx_].Cells[3].Value = hargaBarang_;
             dataGridView1.Rows[idx_].Cells[4].Value = hargaJual_;
+            
+             */
+
+            DataRow drow = this.sourceDataGrid.NewRow();
+            drow["NO"] = idx_ + 1;
+            drow["KODE"] = kode_;
+            drow["NAMA BARANG"] = nama_barang_;
+            drow["HARGA BELI"] = hargaBarang_;
+            drow["HARGA JUAL"] = hargaJual_;
+            this.sourceDataGrid.Rows.Add(drow);
+
+            HapusIsianTambahData();
+        }
+
+        private void UpdateDataTable(int idx_, string kode_, string nama_barang_, double hargaBarang_, double hargaJual_)
+        {
+            this.sourceDataGrid.Rows[idx_]["KODE"] = kode_;
+            this.sourceDataGrid.Rows[idx_]["NAMA BARANG"] = nama_barang_;
+            this.sourceDataGrid.Rows[idx_]["HARGA BELI"] = hargaBarang_;
+            this.sourceDataGrid.Rows[idx_]["HARGA JUAL"] = hargaJual_;
 
             HapusIsianTambahData();
         }
@@ -157,7 +194,8 @@ namespace TokoSederhana
         {
             if (!this.dataGridView1.Rows[this.rowSelectedForEdit].IsNewRow)
             {
-                this.dataGridView1.Rows.RemoveAt(this.rowSelectedForEdit);
+                //this.dataGridView1.Rows.RemoveAt(this.rowSelectedForEdit);
+                this.sourceDataGrid.Rows.RemoveAt(this.rowSelectedForEdit);
             }
         }
     }

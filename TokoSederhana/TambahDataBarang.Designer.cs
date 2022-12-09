@@ -30,7 +30,7 @@ namespace TokoSederhana
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,11 +46,6 @@ namespace TokoSederhana
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Kode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NamaBarang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HargaBarang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HargaJual = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
@@ -213,18 +208,12 @@ namespace TokoSederhana
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.PaleTurquoise;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.AliceBlue;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.PaleTurquoise;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.No,
-            this.Kode,
-            this.NamaBarang,
-            this.HargaBarang,
-            this.HargaJual});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(179, 53);
             this.dataGridView1.Name = "dataGridView1";
@@ -236,63 +225,17 @@ namespace TokoSederhana
             this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
             // 
-            // No
-            // 
-            this.No.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.No.FillWeight = 0.1534802F;
-            this.No.HeaderText = "NO";
-            this.No.MinimumWidth = 30;
-            this.No.Name = "No";
-            this.No.ReadOnly = true;
-            this.No.Width = 48;
-            // 
-            // Kode
-            // 
-            this.Kode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Kode.FillWeight = 0.356018F;
-            this.Kode.HeaderText = "KODE";
-            this.Kode.MinimumWidth = 75;
-            this.Kode.Name = "Kode";
-            this.Kode.ReadOnly = true;
-            this.Kode.Width = 75;
-            // 
-            // NamaBarang
-            // 
-            this.NamaBarang.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NamaBarang.HeaderText = "NAMA BARANG";
-            this.NamaBarang.MinimumWidth = 75;
-            this.NamaBarang.Name = "NamaBarang";
-            this.NamaBarang.ReadOnly = true;
-            // 
-            // HargaBarang
-            // 
-            this.HargaBarang.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.HargaBarang.FillWeight = 3.909241F;
-            this.HargaBarang.HeaderText = "HARGA BELI";
-            this.HargaBarang.MinimumWidth = 100;
-            this.HargaBarang.Name = "HargaBarang";
-            this.HargaBarang.ReadOnly = true;
-            // 
-            // HargaJual
-            // 
-            this.HargaJual.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.HargaJual.FillWeight = 38.00946F;
-            this.HargaJual.HeaderText = "HARGA JUAL";
-            this.HargaJual.MinimumWidth = 100;
-            this.HargaJual.Name = "HargaJual";
-            this.HargaJual.ReadOnly = true;
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(134, 26);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(133, 22);
             this.toolStripMenuItem1.Text = "Delete Row";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
@@ -332,11 +275,6 @@ namespace TokoSederhana
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn No;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Kode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NamaBarang;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HargaBarang;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HargaJual;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
